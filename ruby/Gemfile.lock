@@ -1,0 +1,45 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    backports (3.6.4)
+    bson (1.12.2)
+    bson_ext (1.12.2)
+      bson (~> 1.12.2)
+    kgio (2.9.3)
+    mongo (1.12.2)
+      bson (= 1.12.2)
+    multi_json (1.11.0)
+    rack (1.6.1)
+    rack-protection (1.5.3)
+      rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    raindrops (0.13.0)
+    sinatra (1.4.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    sinatra-contrib (1.4.2)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (~> 1.3)
+    tilt (1.4.1)
+    unicorn (4.9.0)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bson_ext
+  mongo
+  multi_json
+  sinatra
+  sinatra-contrib
+  tilt (= 1.4.1)
+  unicorn
