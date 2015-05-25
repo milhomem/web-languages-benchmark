@@ -22,7 +22,7 @@ pm2 delete index; pm2 start index.js --instances 8
 
 ## Testing
 ```bash
-curl 192.168.33.10:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8081/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 ```
 
 ## Stop the server

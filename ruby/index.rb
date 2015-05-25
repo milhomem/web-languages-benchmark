@@ -23,7 +23,7 @@ class MyApp < Sinatra::Base
     set :environment, :production
   end
 
-  put '/ruby/taxi-position' do
+  put '/taxi-position' do
     content_type :json
     jsonRequest = parsed_body
 
