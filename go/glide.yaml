@@ -1,0 +1,8 @@
+package: main
+
+import:
+  - package: github.com/gnagel/go-geohash/ggeohash
+  - package: github.com/smallfish/simpleyaml
+  - package: gopkg.in/mgo.v2
+  - package: gopkg.in/mgo.v2/bson
+  - package: github.com/hoisie/web
