@@ -1,8 +1,8 @@
 # Ruby server
 
 ## Dependencies
-* Ruby 1.9.3+
-* Unicorn v4.9.0+
+* Ruby 2.2.1
+* Puma
 * NoSQL Database MongoDB 2.4+
 * Nginx 1.4.6+
 * Sinatra Framework
@@ -11,18 +11,23 @@
 ```bash
 gem install bundler
 bundle install
-ln -s /path/to/nginx.conf /etc/nginx/sites-enabled/benchmark.conf
+ln -s nginx.conf /etc/nginx/sites-enabled/benchmark.conf
 /etc/init.d/nginx restart
 ```
 
-## Start the server
+## Start puma server
 ```bash
-unicorn -c unicorn.rb -E deployment -D
+puma -C puma.rb
+```
+
+## Start unicorn server
+```bash
+unicorn -c unicorn.rb -E deployment
 ```
 
 ## Testing
 ```bash
-curl 192.168.33.10:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 ```
 
 ## Stop the server
