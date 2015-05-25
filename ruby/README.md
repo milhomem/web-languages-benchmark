@@ -11,7 +11,7 @@
 ```bash
 gem install bundler
 bundle install
-ln -s nginx.conf /etc/nginx/sites-enabled/benchmark.conf
+ln -s nginx.conf /etc/nginx/sites-enabled/ruby.conf
 /etc/init.d/nginx restart
 ```
 
@@ -27,7 +27,7 @@ unicorn -c unicorn.rb -E deployment
 
 ## Testing
 ```bash
-curl localhost:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8080/ruby/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 ```
 
 ## Stop the server
