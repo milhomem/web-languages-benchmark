@@ -17,12 +17,12 @@ ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/ruby.conf
 
 ## Start puma server
 ```bash
-puma -C puma.rb
+bundle exec puma -C puma.rb
 ```
 
 ## Start unicorn server
 ```bash
-unicorn -c unicorn.rb -E deployment
+bundle exec unicorn -c unicorn.rb -E deployment -D
 ```
 
 ## Testing
