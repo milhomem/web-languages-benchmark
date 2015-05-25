@@ -11,7 +11,7 @@
 ```bash
 gem install bundler
 bundle install
-ln -s nginx.conf /etc/nginx/sites-enabled/ruby.conf
+ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/ruby.conf
 /etc/init.d/nginx restart
 ```
 
