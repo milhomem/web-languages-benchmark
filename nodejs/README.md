@@ -11,7 +11,7 @@
 ```bash
 npm install pm2 -g
 npm install -d
-ln -s /path/to/nginx.conf /etc/nginx/sites-enabled/benchmark.conf
+ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/node.conf
 /etc/init.d/nginx restart
 ```
 
