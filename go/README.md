@@ -8,6 +8,8 @@ Go API
 * git clone https://github.com/Masterminds/glide /opt/glide && cd /opt/glide && make bootstrap && cd -
 * /opt/glide/glide in
 * /opt/glide/glide install
+* ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/go.conf
+* /etc/init.d/nginx restart
 
 #### OSX
 * brew install go hg glide

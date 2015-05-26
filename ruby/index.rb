@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'sinatra/config_file'
 require 'mongo'
 require 'json'
+require 'pr_geohash'
 
 include Mongo
 
@@ -25,12 +26,16 @@ class MyApp < Sinatra::Base
 
   put '/taxi-position' do
     content_type :json
-    jsonRequest = parsed_body
+    json_request = parsed_body
+
+    lat, long = json_request['lat'], json_request['long']
 
     criteria = {:_id => BSON::ObjectId.from_string('556018800640fd52df330d31')}
-    positionRecord = {'lat' => jsonRequest['lat'], 'long' => jsonRequest['long']}
+    geo_hash = GeoHash.encode(lat.to_f, long.to_f, 16)
+
+    position_record = {'lat' => lat, 'long' => long, 'geohash' => geo_hash, 'updated' => Time.new }
     flags = {:upsert => true}
-    settings.mongo_db[settings.mongodb['collection']].update(criteria, positionRecord, flags)
+    settings.mongo_db[settings.mongodb['collection']].update(criteria, position_record, flags)
 
     status 204
   end

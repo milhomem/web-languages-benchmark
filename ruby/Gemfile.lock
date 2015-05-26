@@ -10,6 +10,7 @@ GEM
     mongo (1.12.2)
       bson (= 1.12.2)
     multi_json (1.11.0)
+    pr_geohash (1.0.0)
     puma (2.11.3)
       rack (>= 1.1, < 2.0)
     rack (1.6.1)
@@ -42,6 +43,7 @@ DEPENDENCIES
   bson_ext
   json
   mongo
+  pr_geohash
   puma
   sinatra
   sinatra-contrib
