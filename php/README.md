@@ -12,7 +12,7 @@
 ```bash
 curl -sS https://getcomposer.org/installer | php
 composer install
-ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/benchmark.conf
+ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/php.conf
 /etc/init.d/nginx restart
 ```
 
