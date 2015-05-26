@@ -1,0 +1,14 @@
+---
+mongodb:
+    host: localhost
+    port: 27017
+    username:
+    password:
+    database: benchmark
+    collection: positions
+
+nginx:
+    listen: 8083
+
+proxy:
+    listen: 9003

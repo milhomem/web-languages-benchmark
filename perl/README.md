@@ -10,7 +10,7 @@
 ```bash
 apt-get install carton
 carton install --deployment
-ln -s /path/to/nginx.conf /etc/nginx/sites-enabled/benchmark.conf
+ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/perl.conf
 /etc/init.d/nginx restart
 ```
 
@@ -21,7 +21,7 @@ carton exec hypnotoad ./index.pl
 
 ## Testing
 ```bash
-curl 192.168.33.10:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8083/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 ```
 
 ## Stop the server

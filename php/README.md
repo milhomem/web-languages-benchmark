@@ -24,7 +24,7 @@ ln -s $PWD/php-fpm-pool.conf /etc/php5/fpm/pool.d/benchmark.conf
 
 ## Testing
 ```bash
-curl 192.168.33.10:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8082/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 ```
 
 ## Stop the server

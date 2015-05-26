@@ -2,12 +2,12 @@
 use Mojolicious::Lite;
 
 app->plugin('yaml_config', {
-    file => '../config.yml',
+    file => 'config.yml',
 });
 
 app->config(hypnotoad => {listen => ['http://*:' . app->stash('config')->{proxy}{listen}]});
 
-app->plugin('mongodb', { 
+app->plugin('mongodb', {
     host => app->stash('config')->{mongodb}{host},
     port => app->stash('config')->{mongodb}{port},
     helper => 'db',
