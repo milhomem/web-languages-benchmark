@@ -18,7 +18,7 @@ ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/php.conf
 
 ## Start the server
 ```bash
-ln -s /path/to/php-fpm-pool.conf /etc/php5/fpm/pool.d/benchmark.conf
+ln -s $PWD/php-fpm-pool.conf /etc/php5/fpm/pool.d/benchmark.conf
 /etc/init.d/php5-fpm restart
 ```
 
