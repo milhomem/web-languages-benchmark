@@ -1212,6 +1212,12 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Geo-Hash-0.02
+    pathname: A/AN/ANDYA/Geo-Hash-0.02.tar.gz
+    provides:
+      Geo::Hash 0.02
+    requirements:
+      Test::More 0
   IO-Socket-IP-0.37
     pathname: P/PE/PEVANS/IO-Socket-IP-0.37.tar.gz
     provides:

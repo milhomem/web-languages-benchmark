@@ -1,3 +1,5 @@
 requires 'Mojolicious', '6.11';
 requires 'Mojolicious::Plugin::Mongodb', '1.16';
 requires 'Mojolicious::Plugin::YamlConfig', '0.2.0';
+requires 'Geo::Hash', '0.02';
+requires 'DateTime::Tiny';
