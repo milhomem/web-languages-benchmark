@@ -5,7 +5,7 @@ from mongoengine import *
 from bson.objectid import ObjectId
 import os, yaml
 
-configFile = os.path.join(os.getcwd(), '..', 'config.yml')
+configFile = os.path.join(os.getcwd(), 'config.yml')
 with open(configFile, 'r') as ymlfile:
         config = yaml.load(ymlfile)
 

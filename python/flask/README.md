@@ -21,8 +21,7 @@ ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/python.conf
 
 ## Start the server
 ```bash
-uwsgi --socket :9004 --wsgi-file index.py --callable app --master --processes 8 --threads 1 1>/var/log/uwsgi.log 2>&1 &
-echo $! > /var/run/uwsgi.pid
+uwsgi --socket :9004 --wsgi-file index.py --callable app --master --processes 8 --threads 1 1>/var/log/uwsgi.log 2>&1 & echo $! > /var/run/uwsgi.pid
 ```
 
 ## Testing
