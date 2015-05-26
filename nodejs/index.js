@@ -6,7 +6,8 @@ var path = require('path'),
   mongo = require('mongoskin'),
   Server = mongo.Server,
   Db = mongo.Db,
-  ObjectID = mongo.ObjectID;
+  ObjectID = mongo.ObjectID,
+  geohash = require('ngeohash');
 
 var server = restify.createServer();
 server.use(restify.bodyParser());
@@ -21,7 +22,8 @@ server.put('/taxi-position', function respond(req, res, next) {
 
   var collection = db.collection(config.mongodb.collection);
   var criteria = {'_id': new ObjectID('556018800640fd52df330d31')};
-  var positionRecord = {'lat': lat, 'long': long};
+  var hash = geohash.encode(lat, long, 16);
+  var positionRecord = {'lat': lat, 'long': long, 'geohash': hash, 'updated': new Date()};
   var flags = {'upsert': true};
   collection.update(criteria, positionRecord, flags, function(err, myCollection) {
       if (err) console.log(err);
