@@ -3,25 +3,21 @@ Go API
 
 ### Install Go Glide package manager and Mercurial
 
+#### Debian
+* sudo apt-get install golang-go
+* git clone https://github.com/Masterminds/glide /opt/glide && cd /opt/glide && make bootstrap && cd -
+* /opt/glide/glide in
+* /opt/glide/glide install
+
 #### OSX
 * brew install go hg glide
 * cd web-languages-benchmark/go
 * glide in
 * glide install
 
-#### Debian
-* sudo apt-get install golang-go
-* git clone https://github.com/Masterminds/glide
-* cd glide
-* make bootstrap
-* cd /WORKSPACE/web-languages-benchmark/go
-* /PATHTOGLIDE/glide/glide in
-* /PATHTOGLIDE/glide/glide install
-
 ### Run Go Server (build binary and run server)
-* cd /WORKSPACE/web-languages-benchmark/go
 * go build -o bin/main
-* ./bin/main
+* ./bin/main &
 
 ### Make a test call using cUrl
 curl localhost:8086/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'

@@ -35,7 +35,7 @@ func getConfiguration(configPath string) (string, int, string, string) {
 }
 
 func putTaxiPosition(ctx *web.Context) string {
-    dbHost, dbPort, dbName, dbCollection := getConfiguration("../config.yml")
+    dbHost, dbPort, dbName, dbCollection := getConfiguration("config.yml")
 
     body, _ := ioutil.ReadAll(ctx.Request.Body)
     taxiPosition := &TaxiPosition{}
