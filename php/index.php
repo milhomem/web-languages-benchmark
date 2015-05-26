@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Camcima\GeoHash;
 
 $app = new Silex\Application();
-$app->register(new Igorw\Silex\ConfigServiceProvider(__DIR__ . "/../config.yml"));
+$app->register(new Igorw\Silex\ConfigServiceProvider(__DIR__ . "/config.yml"));
 
 $app['db'] = $app->share(function ($app) {
     $host = $app['mongodb']['host'] . ':' . $app['mongodb']['port'];
