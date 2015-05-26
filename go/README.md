@@ -2,13 +2,24 @@ Go API
 ---
 
 ### Install Go Glide package manager and Mercurial
-* brew install hg glide (or apt-get)
+
+#### OSX
+* brew install go hg glide
 * cd web-languages-benchmark/go
 * glide in
 * glide install
 
-### Run Go Server
-Build binary from source and run server
+#### Debian
+* sudo apt-get install golang-go
+* git clone https://github.com/Masterminds/glide
+* cd glide
+* make bootstrap
+* cd /WORKSPACE/web-languages-benchmark/go
+* /PATHTOGLIDE/glide/glide in
+* /PATHTOGLIDE/glide/glide install
+
+### Run Go Server (build binary and run server)
+* cd /WORKSPACE/web-languages-benchmark/go
 * go build -o bin/main
 * ./bin/main
 
@@ -21,3 +32,4 @@ curl localhost:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": 
 * http://labix.org/mgo
 * http://webgo.io/
 * http://stackoverflow.com/questions/21014073/sending-json-in-post-request-to-web-api-written-in-web-go-framework
+* https://github.com/Masterminds/glide
