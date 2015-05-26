@@ -11,12 +11,12 @@ class MyApp < Sinatra::Base
 
   helpers do
     def parsed_body
-      JSON.parse(request.env["rack.input"].read)
+      JSON.parse(request.env['rack.input'].read)
     end
   end
 
   configure do
-    config_file '../config.yml'
+    config_file 'config.yml'
 
     connection = MongoClient.new(settings.mongodb['host'], settings.mongodb['port'])
     set :mongo_db, connection.db(settings.mongodb['database'])
