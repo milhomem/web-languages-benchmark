@@ -24,7 +24,7 @@ Go API
 * ./bin/main
 
 ### Make a test call using cUrl
-curl localhost:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8086/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 
 ### Reference
 * https://gobyexample.com/multiple-return-values

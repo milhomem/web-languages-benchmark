@@ -66,5 +66,5 @@ func putTaxiPosition(ctx *web.Context) string {
 
 func main() {
     web.Put("/taxi-position", putTaxiPosition)
-    web.Run("0.0.0.0:9000")
+    web.Run("0.0.0.0:9006")
 }
