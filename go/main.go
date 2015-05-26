@@ -6,6 +6,7 @@ import (
     "io/ioutil"
     "path/filepath"
     "fmt"
+    "time"
     "github.com/gnagel/go-geohash/ggeohash"
     "github.com/smallfish/simpleyaml"
     "gopkg.in/mgo.v2"
@@ -17,6 +18,7 @@ type TaxiPosition struct {
     Lat float64 `json:"lat"`
     Long float64 `json:"long"`
     Geohash string
+    Updated time.Time
 }
 
 func getConfiguration(configPath string) (string, int, string, string) {
@@ -40,6 +42,7 @@ func putTaxiPosition(ctx *web.Context) string {
     json.Unmarshal(body, &taxiPosition)
 
     taxiPosition.Geohash = ggeohash.Encode(taxiPosition.Lat, taxiPosition.Long, 9)
+    taxiPosition.Updated = time.Now()
 
     session, err := mgo.Dial(fmt.Sprintf("mongodb://%v:%v", dbHost, dbPort))
     if err != nil {

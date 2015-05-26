@@ -2,7 +2,8 @@ Go API
 ---
 
 ### Install Go Glide package manager and Mercurial
-* brew install hg glide
+* brew install hg glide (or apt-get)
+* cd web-languages-benchmark/go
 * glide in
 * glide install
 
@@ -12,7 +13,7 @@ Build binary from source and run server
 * ./bin/main
 
 ### Make a test call using cUrl
-curl localhost:9000/taxi-position --request PUT --data '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 
 ### Reference
 * https://gobyexample.com/multiple-return-values
