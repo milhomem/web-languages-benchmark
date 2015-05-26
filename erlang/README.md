@@ -8,11 +8,11 @@
 
 ## Installing and configuring
 ```bash
-./rebar get-deps 
+./rebar get-deps
 ./rebar compile
 ./rebar boss c=test_functional
 vi boss.config #Change mongodb configurations
-ln -s /path/to/nginx.conf /etc/nginx/sites-enabled/benchmark.conf
+ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/erlang.conf
 /etc/init.d/nginx restart
 ```
 
@@ -23,7 +23,7 @@ ln -s /path/to/nginx.conf /etc/nginx/sites-enabled/benchmark.conf
 
 ## Testing
 ```bash
-curl 192.168.33.10:8080/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
+curl localhost:8085/taxi-position --request PUT -d '{"lat": -19.432608, "long": -99.133208}' -H 'Accept: application/json' -H 'Content-type: application/json'
 ```
 
 ## Stop the server
