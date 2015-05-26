@@ -4,6 +4,7 @@ from flask.ext.mongoengine import MongoEngine
 from mongoengine import *
 from bson.objectid import ObjectId
 import os, yaml
+import Geohash, datetime
 
 configFile = os.path.join(os.getcwd(), 'config.yml')
 with open(configFile, 'r') as ymlfile:
@@ -22,6 +23,8 @@ db = MongoEngine(app)
 class Position(DynamicDocument):
         lat = FloatField(required=True)
         long = FloatField(required=True)
+        geohash = StringField(required=True)
+        updated = DateTimeField(required=True)
         meta = {'collection': config['mongodb']['collection']}
 
 @app.route("/taxi-position", methods=['PUT'])
@@ -31,7 +34,9 @@ def position_update():
         Position(
                 id=ObjectId('556018800640fd52df330d31'),
                 lat=jsonRequest['lat'],
-                long=jsonRequest['long']
+                long=jsonRequest['long'],
+                geohash=Geohash.encode(jsonRequest['lat'], jsonRequest['long'], precision=16),
+                updated=datetime.datetime.utcnow()
         ).save()
 
         return ('', 204)
