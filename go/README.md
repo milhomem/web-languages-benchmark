@@ -11,6 +11,8 @@ Go API
 * ln -s $PWD/nginx.conf /etc/nginx/sites-enabled/go.conf
 * /etc/init.d/nginx restart
 
+=======
+
 #### OSX
 * brew install go hg glide
 * cd web-languages-benchmark/go
@@ -18,6 +20,7 @@ Go API
 * glide install
 
 ### Run Go Server (build binary and run server)
+* cd /WORKSPACE/web-languages-benchmark/go
 * go build -o bin/main
 * ./bin/main &
 
