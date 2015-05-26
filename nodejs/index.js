@@ -1,7 +1,7 @@
 var path = require('path'),
   fs = require('fs'),
   yaml = require('js-yaml'),
-  config = yaml.load(fs.readFileSync(path.join(__dirname, '../config.yml'), 'utf8')),
+  config = yaml.load(fs.readFileSync(path.join(__dirname, 'config.yml'), 'utf8')),
   restify = require('restify'),
   mongo = require('mongoskin'),
   Server = mongo.Server,
