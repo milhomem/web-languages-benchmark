@@ -3,6 +3,7 @@
         "silex/silex": "~1.2",
         "ext-mongo": "~1.6",
         "igorw/config-service-provider": "~1.2",
-        "symfony/yaml": "~2.6"
+        "symfony/yaml": "~2.6",
+        "camcima/php-geohash": "dev-master"
     }
 }
