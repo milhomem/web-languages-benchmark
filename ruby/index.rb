@@ -4,6 +4,7 @@ require 'sinatra/config_file'
 require 'mongo'
 require 'json'
 require 'pr_geohash'
+require 'newrelic_rpm'
 
 include Mongo
 
