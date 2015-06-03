@@ -12,6 +12,7 @@ import (
     "gopkg.in/mgo.v2"
     "gopkg.in/mgo.v2/bson"
     "github.com/hoisie/web"
+    "runtime"
 )
 
 type TaxiPosition struct {
@@ -19,6 +20,11 @@ type TaxiPosition struct {
     Long float64 `json:"long"`
     Geohash string
     Updated time.Time
+}
+
+var MongoConnection struct {
+    collection *mgo.Collection
+    session *mgo.Session
 }
 
 func getConfiguration(configPath string) (string, int, string, string) {
@@ -35,8 +41,6 @@ func getConfiguration(configPath string) (string, int, string, string) {
 }
 
 func putTaxiPosition(ctx *web.Context) string {
-    dbHost, dbPort, dbName, dbCollection := getConfiguration("config.yml")
-
     body, _ := ioutil.ReadAll(ctx.Request.Body)
     taxiPosition := &TaxiPosition{}
     json.Unmarshal(body, &taxiPosition)
@@ -44,27 +48,33 @@ func putTaxiPosition(ctx *web.Context) string {
     taxiPosition.Geohash = ggeohash.Encode(taxiPosition.Lat, taxiPosition.Long, 9)
     taxiPosition.Updated = time.Now()
 
-    session, err := mgo.Dial(fmt.Sprintf("mongodb://%v:%v", dbHost, dbPort))
+    _, err := MongoConnection.collection.UpsertId(bson.ObjectIdHex("556018800640fd52df330d31"), taxiPosition)
     if err != nil {
         log.Fatal(err)
-    }
-    defer session.Close()
-    c := session.DB(dbName).C(dbCollection)
-
-    info, err := c.UpsertId(bson.ObjectIdHex("556018800640fd52df330d31"), taxiPosition)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if info != nil {
-        log.Print(info)
     }
 
     ctx.WriteHeader(204)
 
-    return ""
+    return "{}"
+}
+
+func getMongoCollection() (*mgo.Collection, *mgo.Session) {
+    dbHost, dbPort, dbName, dbCollection := getConfiguration("config.yml")
+    session, err := mgo.Dial(fmt.Sprintf("mongodb://%v:%v", dbHost, dbPort))
+    if err != nil {
+        log.Fatal(err)
+    }
+    collection := session.DB(dbName).C(dbCollection)
+
+    return collection, session
 }
 
 func main() {
+    collection, session := getMongoCollection()
+    MongoConnection.collection = collection
+    MongoConnection.session = session
+
+    runtime.GOMAXPROCS(runtime.NumCPU())
     web.Put("/taxi-position", putTaxiPosition)
-    web.Run("0.0.0.0:9006")
+    web.RunFcgi("0.0.0.0:9006")
 }
